@@ -7,7 +7,7 @@ our $VERSION = '0.01';
 use RT::Interface::Web;
 no warnings 'redefine';
 my $orig = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
-sub HTML::Mason::Commands::_ProcessUpdateMessageRecipients {
+*HTML::Mason::Commands::_ProcessUpdateMessageRecipients = sub {
     $orig->(@_);
 
     my %args = (
@@ -36,7 +36,7 @@ sub HTML::Mason::Commands::_ProcessUpdateMessageRecipients {
             }
         }
     }
-}
+};
 
 1;
 
