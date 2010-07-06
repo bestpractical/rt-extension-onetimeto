@@ -6,8 +6,8 @@ our $VERSION = '0.01';
 
 use RT::Interface::Web;
 no warnings 'redefine';
-my $orig = RT::Interface::Web->can('_ProcessUpdateMessageRecipients');
-sub RT::Interface::Web::_ProcessUpdateMessageRecipients {
+my $orig = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
+sub HTML::Mason::Commands::_ProcessUpdateMessageRecipients {
     $orig->(@_);
 
     my %args = (
