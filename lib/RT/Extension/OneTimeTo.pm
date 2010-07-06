@@ -4,6 +4,40 @@ use warnings;
 
 our $VERSION = '0.01';
 
+use RT::Interface::Web;
+no warnings 'redefine';
+my $orig = RT::Interface::Web->can('_ProcessUpdateMessageRecipients');
+sub RT::Interface::Web::_ProcessUpdateMessageRecipients {
+    $orig->(@_);
+
+    my %args = (
+        ARGSRef           => undef,
+        TicketObj         => undef,
+        MessageArgs       => undef,
+        @_,
+    );
+
+    my $to = $args{ARGSRef}->{'UpdateTo'};
+
+    my $message_args = $args{MessageArgs};
+
+    $message_args->{ToMessageTo} = $to;
+
+    unless ( $args{'ARGSRef'}->{'UpdateIgnoreAddressCheckboxes'} ) {
+        foreach my $key ( keys %{ $args{ARGSRef} } ) {
+            next unless $key =~ /^UpdateTo-(.*)$/;
+
+            my $var   = 'ToMessageTo';
+            my $value = $1;
+            if ( $message_args->{$var} ) {
+                $message_args->{$var} .= ", $value";
+            } else {
+                $message_args->{$var} = $value;
+            }
+        }
+    }
+}
+
 1;
 
 __END__
