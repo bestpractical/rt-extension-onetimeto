@@ -4,6 +4,8 @@ use warnings;
 
 use RT::Test tests => 19;
 
+RT->Config->Set('Plugins', qw(RT::Extension::OneTimeTo));
+
 my ($baseurl, $m) = RT::Test->started_ok;
 ok $m->login, 'logged in';
 
