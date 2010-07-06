@@ -52,6 +52,6 @@ $m->content_like(qr/RT-Send-To:.*rt-to-test\@example.com/s, 'added To');
 
 ( $mail ) = RT::Test->fetch_caught_mails;
 like( $mail, qr/this is main reply content/, 'email contains main reply content' );
-# check the email link in page too
-$m->follow_link_ok( { text => 'Show', n => 2 }, 'show the email outgoing' );
-$m->content_like( qr/this is main reply content/, 'email contains main reply content');
+like( $mail, qr/Cc:.*rt-test\@example.com/, 'email contains Ccs');
+like( $mail, qr/To:.*rt-to-test\@example.com/, 'email contains Tos');
+
