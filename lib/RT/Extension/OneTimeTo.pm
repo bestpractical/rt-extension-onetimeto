@@ -1,14 +1,14 @@
 package RT::Extension::OneTimeTo;
 use strict;
 use warnings;
+no warnings 'redefine';
 
 our $VERSION = '0.01';
 
 use RT::Interface::Web;
-no warnings 'redefine';
-my $orig = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
+my $orig_process = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
 *HTML::Mason::Commands::_ProcessUpdateMessageRecipients = sub {
-    $orig->(@_);
+    $orig_process->(@_);
 
     my %args = (
         ARGSRef           => undef,
@@ -36,6 +36,30 @@ my $orig = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
             }
         }
     }
+};
+
+use RT::Ticket;
+my $orig_note = RT::Ticket->can('_RecordNote');
+*RT::Ticket::_RecordNote = sub {
+    my $self = shift;
+    my %args = @_;
+
+    unless ( $args{'MIMEObj'} ) {
+        $args{'MIMEObj'} = MIME::Entity->build(
+            Data => ( ref $args{'Content'}? $args{'Content'}: [ $args{'Content'} ] )
+        );
+    }
+
+    my $type = 'To';
+    if ( defined $args{ $type . 'MessageTo' } ) {
+
+        my $addresses = join ', ', (
+            map { RT::User->CanonicalizeEmailAddress( $_->address ) }
+                Email::Address->parse( $args{ $type . 'MessageTo' } ) );
+        $args{'MIMEObj'}->head->add( 'RT-Send-' . $type, Encode::encode_utf8( $addresses ) );
+    }
+
+    return $orig_note->($self, %args);
 };
 
 1;
