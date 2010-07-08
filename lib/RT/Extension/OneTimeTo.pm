@@ -79,6 +79,15 @@ my $orig_recipients = RT::Action::Notify->can('SetRecipients');
             );
         }
     }
+
+    # deal with NotifyActor, mostly copied from the original method
+    my $creatorObj = $self->TransactionObj->CreatorObj;
+    my $creator = $creatorObj->EmailAddress();
+    my $TransactionCurrentUser = RT::CurrentUser->new;
+    $TransactionCurrentUser->LoadByName($creatorObj->Name);
+    if (!RT->Config->Get('NotifyActor',$TransactionCurrentUser)) {
+        @{ $self->{'To'} }  = grep ( lc $_ ne lc $creator, @{ $self->{'To'} } );
+    }
 };
 
 1;
