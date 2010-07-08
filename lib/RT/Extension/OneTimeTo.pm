@@ -23,6 +23,7 @@ my $orig_process = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients')
 
     $message_args->{ToMessageTo} = $to;
 
+    # transform UpdateTo into ToMessageTo; mostly copied from the original method
     unless ( $args{'ARGSRef'}->{'UpdateIgnoreAddressCheckboxes'} ) {
         foreach my $key ( keys %{ $args{ARGSRef} } ) {
             next unless $key =~ /^UpdateTo-(.*)$/;
@@ -44,12 +45,14 @@ my $orig_note = RT::Ticket->can('_RecordNote');
     my $self = shift;
     my %args = @_;
 
+    # lazily initialize the MIMEObj if needed; copied from original method
     unless ( $args{'MIMEObj'} ) {
         $args{'MIMEObj'} = MIME::Entity->build(
             Data => ( ref $args{'Content'}? $args{'Content'}: [ $args{'Content'} ] )
         );
     }
 
+    # if there's a one-time To, add it to the MIMEObj
     my $type = 'To';
     if ( defined $args{ $type . 'MessageTo' } ) {
 
@@ -68,6 +71,7 @@ my $orig_recipients = RT::Action::Notify->can('SetRecipients');
     my $self = shift;
     $orig_recipients->($self, @_);
 
+    # copy RT-Send-To addresses to To addresses
     if ( $self->Argument =~ /\bOtherRecipients\b/ ) {
         if ( my $attachment = $self->TransactionObj->Attachments->First ) {
             push @{ $self->{'To'} }, map { $_->address } Email::Address->parse(
