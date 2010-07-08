@@ -62,6 +62,21 @@ my $orig_note = RT::Ticket->can('_RecordNote');
     return $orig_note->($self, %args);
 };
 
+use RT::Action::Notify;
+my $orig_recipients = RT::Action::Notify->can('SetRecipients');
+*RT::Action::Notify::SetRecipients = sub {
+    my $self = shift;
+    $orig_recipients->($self, @_);
+
+    if ( $self->Argument =~ /\bOtherRecipients\b/ ) {
+        if ( my $attachment = $self->TransactionObj->Attachments->First ) {
+            push @{ $self->{'To'} }, map { $_->address } Email::Address->parse(
+                $attachment->GetHeader('RT-Send-To')
+            );
+        }
+    }
+};
+
 1;
 
 __END__
