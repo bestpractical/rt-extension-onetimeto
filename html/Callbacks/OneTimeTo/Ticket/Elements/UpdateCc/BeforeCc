@@ -6,9 +6,7 @@ $ARGSRef
 </%ARGS>
 <%INIT>
 </%INIT>
-<tr><td class="label"><&|/l&>One-time To</&>:</td><td><& /Elements/EmailInput, Name => 'UpdateTo', Size => '60', Default => $ARGSRef->{UpdateTo} &>
-<input type="hidden" id="UpdateIgnoreAddressCheckboxes" name="UpdateIgnoreAddressCheckboxes" value="0">
-        <br />
+<tr><td class="label"><&|/l&>One-time To</&>:</td><td><& /Elements/EmailInput, Name => 'UpdateTo', Size => '60', Default => $ARGSRef->{UpdateTo} &><br />
 
 %if (scalar @one_time_Ccs) {
 <i class="label">(<&|/l&>check to add</&>)</i>
