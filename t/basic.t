@@ -13,7 +13,6 @@ my $queue = RT::Queue->new($RT::Nobody);
 my $qid = $queue->Load('General');
 ok( $qid, "Loaded General queue" );
 
-RT::Test->set_mail_catcher;
 RT::Test->clean_caught_mails;
 
 $m->form_name('CreateTicketInQueue');
