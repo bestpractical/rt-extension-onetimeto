@@ -12,10 +12,11 @@ $ARGSRef
 <i class="label">(<&|/l&>check to add</&>)</i>
 %}
 %foreach my $addr ( @one_time_Ccs ) {
-<input 
-id="UpdateTo-<%$addr%>" 
-name="UpdateTo-<%$addr%>" 
-    type="checkbox" 
+<input
+    id="UpdateTo-<%$addr%>"
+    name="UpdateTo-<%$addr%>"
+    class="onetime onetimeto"
+    type="checkbox"
 % my $clean_addr = $txn_addresses{$addr}->format;
 % $clean_addr =~ s/'/\\'/g;
     onClick="checkboxToInput('UpdateTo', 'UpdateTo-<%$addr%>','<%$clean_addr%>' ); $(UpdateIgnoreAddressCheckboxes).value=1"
