@@ -4,6 +4,7 @@ use warnings;
 no warnings 'redefine';
 
 our $VERSION = '0.02';
+RT->AddJavaScript('onetimeto.js');
 
 use RT::Interface::Web;
 my $orig_process = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
