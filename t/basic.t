@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use RT::Test tests => 24, requires => ['RT::Extension::OneTimeTo'];
+use RT::Test tests => 24, testing => 'RT::Extension::OneTimeTo';
 
 my ($baseurl, $m) = RT::Test->started_ok;
 ok $m->login, 'logged in';
