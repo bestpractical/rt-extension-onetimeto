@@ -3,7 +3,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use RT::Interface::Web;
 my $orig_process = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
