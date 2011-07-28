@@ -45,6 +45,12 @@ my $orig_note = RT::Ticket->can('_RecordNote');
     my $self = shift;
     my %args = @_;
 
+    # We can't do anything if we don't have any message, so let the original
+    # method handle it rather than creating an empty mime body
+    unless ( $args{'MIMEObj'} || $args{'Content'} ) {
+        return $orig_note->($self, %args);
+    }
+
     # lazily initialize the MIMEObj if needed; copied from original method
     unless ( $args{'MIMEObj'} ) {
         $args{'MIMEObj'} = MIME::Entity->build(
@@ -62,6 +68,7 @@ my $orig_note = RT::Ticket->can('_RecordNote');
         $args{'MIMEObj'}->head->add( 'RT-Send-' . $type, Encode::encode_utf8( $addresses ) );
     }
 
+    # The original method will always get a MIMEObj now
     return $orig_note->($self, %args);
 };
 
