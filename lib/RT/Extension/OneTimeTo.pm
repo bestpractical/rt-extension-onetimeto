@@ -78,22 +78,13 @@ my $orig_recipients = RT::Action::Notify->can('SetRecipients');
     my $self = shift;
     $orig_recipients->($self, @_);
 
-    # copy RT-Send-To addresses to To addresses
+    # copy RT-Send-To addresses to NoSquelched To addresses
     if ( $self->Argument =~ /\bOtherRecipients\b/ ) {
         if ( my $attachment = $self->TransactionObj->Attachments->First ) {
-            push @{ $self->{'To'} }, map { $_->address } Email::Address->parse(
+            push @{ $self->{'NoSquelch'}{'To'} }, map { $_->address } Email::Address->parse(
                 $attachment->GetHeader('RT-Send-To')
             );
         }
-    }
-
-    # deal with NotifyActor, mostly copied from the original method
-    my $creatorObj = $self->TransactionObj->CreatorObj;
-    my $creator = $creatorObj->EmailAddress();
-    my $TransactionCurrentUser = RT::CurrentUser->new;
-    $TransactionCurrentUser->LoadByName($creatorObj->Name);
-    if (!RT->Config->Get('NotifyActor',$TransactionCurrentUser)) {
-        @{ $self->{'To'} }  = grep ( lc $_ ne lc $creator, @{ $self->{'To'} } );
     }
 };
 
