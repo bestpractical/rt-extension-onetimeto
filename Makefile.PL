@@ -2,6 +2,7 @@ use inc::Module::Install;
 
 RTx('RT-Extension-OneTimeTo');
 all_from('lib/RT/Extension/OneTimeTo.pm');
+readme_from('lib/RT/Extension/OneTimeTo.pm');
 
 requires_rt("4.0.6");
 
