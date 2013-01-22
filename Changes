@@ -1,0 +1,7 @@
+0.03    Tue Jan 22 15:48:33 PST 2013
+
+    • Overhaul the doc
+    • Grab one-time recipient suggestions from previous One-time To addresses
+    • Bug fix: Ensure the One-time To suggestion checkboxes remain checked
+    • Use the RT standard EscapeJS function which is bulletproof compared
+      to the previous manual escaping
