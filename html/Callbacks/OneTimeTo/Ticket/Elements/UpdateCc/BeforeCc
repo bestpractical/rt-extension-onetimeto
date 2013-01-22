@@ -19,6 +19,6 @@ $ARGSRef
     type="checkbox"
 % my $clean_addr = $txn_addresses{$addr}->format;
     onClick="checkboxToInput('UpdateTo', <% "UpdateTo-$addr" |n,j%>, <%$clean_addr|n,j%> );"
-    <% $ARGS{'UpdateTo-'.$addr} ? 'checked="checked"' : ''%> > <& /Elements/ShowUser, Address => $txn_addresses{$addr}&>
+    <% $ARGSRef->{'UpdateTo-'.$addr} ? 'checked="checked"' : ''%> > <& /Elements/ShowUser, Address => $txn_addresses{$addr}&>
 %}
 </td></tr>
