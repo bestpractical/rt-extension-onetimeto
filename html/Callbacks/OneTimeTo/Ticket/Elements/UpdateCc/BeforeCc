@@ -18,8 +18,7 @@ $ARGSRef
     class="onetime onetimeto"
     type="checkbox"
 % my $clean_addr = $txn_addresses{$addr}->format;
-% $clean_addr =~ s/'/\\'/g;
-    onClick="checkboxToInput('UpdateTo', 'UpdateTo-<%$addr%>','<%$clean_addr%>' );"
+    onClick="checkboxToInput('UpdateTo', <% "UpdateTo-$addr" |n,j%>, <%$clean_addr|n,j%> );"
     <% $ARGS{'UpdateTo-'.$addr} ? 'checked="checked"' : ''%> > <& /Elements/ShowUser, Address => $txn_addresses{$addr}&>
 %}
 </td></tr>
