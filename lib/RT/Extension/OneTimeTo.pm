@@ -6,6 +6,13 @@ no warnings 'redefine';
 our $VERSION = '0.02';
 RT->AddJavaScript('onetimeto.js');
 
+{
+    # Includes RT-Send-To in the list of headers used to grab
+    # one-time recipient suggestions
+    require RT::Attachment;
+    push @RT::Attachment::ADDRESS_HEADERS, "RT-Send-To";
+}
+
 use RT::Interface::Web;
 my $orig_process = HTML::Mason::Commands->can('_ProcessUpdateMessageRecipients');
 *HTML::Mason::Commands::_ProcessUpdateMessageRecipients = sub {
