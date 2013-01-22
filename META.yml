@@ -1,0 +1,24 @@
+---
+abstract: 'Adds a One-time To: box next to the One-time Cc/Bcc boxes'
+author:
+  - 'Shawn M Moore, Alex Vandiver, and Thomas Sibley'
+build_requires:
+  ExtUtils::MakeMaker: 6.36
+configure_requires:
+  ExtUtils::MakeMaker: 6.36
+distribution_type: module
+dynamic_config: 1
+generated_by: 'Module::Install version 1.06'
+license: gpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: RT-Extension-OneTimeTo
+no_index:
+  directory:
+    - html
+    - inc
+    - t
+resources:
+  license: http://opensource.org/licenses/gpl-license.php
+version: 0.03
