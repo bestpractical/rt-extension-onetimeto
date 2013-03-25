@@ -1,3 +1,8 @@
+0.04
+
+    * Note that the patch isn't needed once 4.0.11 is out
+    * tweak inc/ in the repository for non-devs working from github
+
 0.03    Tue Jan 22 15:48:33 PST 2013
 
     • Overhaul the doc

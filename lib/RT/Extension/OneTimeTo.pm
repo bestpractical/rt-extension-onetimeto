@@ -118,6 +118,7 @@ May need root permissions
 
 =item Optionally, patch your RT install
 
+If you are running 4.0.11, this patch has already been included.
 This enables one-time recipient suggestions from past One-time To addresses
 (i.e. the checkboxes that appear under One-time To/Cc/Bcc):
 
