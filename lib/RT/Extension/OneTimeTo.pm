@@ -3,7 +3,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
-our $VERSION = '0.03';
+our $VERSION = '1.00';
 RT->AddJavaScript('onetimeto.js');
 
 {
@@ -100,33 +100,25 @@ my $orig_recipients = RT::Action::Notify->can('SetRecipients');
 
 RT::Extension::OneTimeTo - Adds a One-time To: box next to the One-time Cc/Bcc boxes
 
-=head1 INSTALLATION 
-
-This extension requires an RT version equal to or newer than 4.0.6.  You may be
-able to get away with RT version 4.0.0 provided you have the 22 May 2012
-security patches applied to your RT install.
+=head1 INSTALLATION
 
 =over
 
-=item perl Makefile.PL
+=item C<perl Makefile.PL>
 
-=item make
+=item C<make>
 
-=item make install
+=item C<make install>
 
 May need root permissions
 
-=item Optionally, patch your RT install
+=item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
 
-If you are running 4.0.11, this patch has already been included.
-This enables one-time recipient suggestions from past One-time To addresses
-(i.e. the checkboxes that appear under One-time To/Cc/Bcc):
+If you are using RT 4.2 or greater, add this line:
 
-    patch -p1 -d /opt/rt4 < patches/0001-Let-list-of-headers-used-for-one-time-recipient-sugg.patch
+    Plugin('RT::Extension::OneTimeTo');
 
-=item Edit your /opt/rt4/etc/RT_SiteConfig.pm
-
-Add this line:
+For RT 4.0, add this line:
 
     Set(@Plugins, qw(RT::Extension::OneTimeTo));
 
@@ -140,20 +132,23 @@ or add C<RT::Extension::OneTimeTo> to your existing C<@Plugins> line.
 
 =back
 
-=head1 AUTHORS
+=head1 AUTHOR
 
-Shawn M Moore, Alex Vandiver, and Thomas Sibley
+Best Practical Solutions, LLC E<lt>modules@bestpractical.comE<gt>
 
 =head1 BUGS
 
 All bugs should be reported via email to
-L<bug-RT-Extension-OneTimeTo@rt.cpan.org|mailto:bug-RT-Extension-OneTimeTo@rt.cpan.org>
+
+    L<bug-RT-Extension-OneTimeTo@rt.cpan.org|mailto:bug-RT-Extension-OneTimeTo@rt.cpan.org>
+
 or via the web at
-L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-OneTimeTo>.
+
+    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-OneTimeTo>.
 
 =head1 LICENSE AND COPYRIGHT
 
-This software is Copyright (c) 2010-2013 by Best Practical Solutions, LLC.
+This software is Copyright (c) 2010-2015 by Best Practical Solutions
 
 This is free software, licensed under:
 

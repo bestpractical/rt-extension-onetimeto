@@ -1,12 +1,15 @@
-0.04
+1.00 2015-02-27
+ - Bump minimum version to 4.0.11, and drop the patch
+ - Packaging updates
 
-    * Note that the patch isn't needed once 4.0.11 is out
-    * tweak inc/ in the repository for non-devs working from github
+0.04 2013-01-22
+ - Note that the patch isn't needed once 4.0.11 is out
+ - tweak inc/ in the repository for non-devs working from github
 
-0.03    Tue Jan 22 15:48:33 PST 2013
+0.03 2013-01-22
+ - Overhaul the doc
+ - Grab one-time recipient suggestions from previous One-time To addresses
+ - Bug fix: Ensure the One-time To suggestion checkboxes remain checked
+ - Use the RT standard EscapeJS function which is bulletproof compared to
+   the previous manual escaping
 
-    • Overhaul the doc
-    • Grab one-time recipient suggestions from previous One-time To addresses
-    • Bug fix: Ensure the One-time To suggestion checkboxes remain checked
-    • Use the RT standard EscapeJS function which is bulletproof compared
-      to the previous manual escaping

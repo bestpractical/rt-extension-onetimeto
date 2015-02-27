@@ -1,14 +1,14 @@
 ---
 abstract: 'Adds a One-time To: box next to the One-time Cc/Bcc boxes'
 author:
-  - 'Shawn M Moore, Alex Vandiver, and Thomas Sibley'
+  - 'Best Practical Solutions, LLC <modules@bestpractical.com>'
 build_requires:
-  ExtUtils::MakeMaker: 6.36
+  ExtUtils::MakeMaker: 6.59
 configure_requires:
-  ExtUtils::MakeMaker: 6.36
+  ExtUtils::MakeMaker: 6.59
 distribution_type: module
 dynamic_config: 1
-generated_by: 'Module::Install version 1.06'
+generated_by: 'Module::Install version 1.14'
 license: gpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,6 +19,11 @@ no_index:
     - html
     - inc
     - t
+requires:
+  perl: 5.8.3
 resources:
   license: http://opensource.org/licenses/gpl-license.php
-version: 0.03
+  repository: https://github.com/bestpractical/rt-extension-onetimeto
+version: '1.00'
+x_module_install_rtx_version: '0.37'
+x_requires_rt: 4.0.11
