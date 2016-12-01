@@ -3,7 +3,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 RT->AddJavaScript('onetimeto.js');
 
 {
