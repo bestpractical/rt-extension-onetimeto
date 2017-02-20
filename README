@@ -9,15 +9,9 @@ INSTALLATION
         May need root permissions
 
     Edit your /opt/rt4/etc/RT_SiteConfig.pm
-        If you are using RT 4.2 or greater, add this line:
+        Add this line:
 
             Plugin('RT::Extension::OneTimeTo');
-
-        For RT 4.0, add this line:
-
-            Set(@Plugins, qw(RT::Extension::OneTimeTo));
-
-        or add RT::Extension::OneTimeTo to your existing @Plugins line.
 
     Clear your mason cache
             rm -rf /opt/rt4/var/mason_data/obj

@@ -51,6 +51,6 @@ $m->content_like(qr/RT-Send-To:.*rt-to-test\@example.com/s, 'added To');
 
 ( $mail ) = RT::Test->fetch_caught_mails;
 like( $mail, qr/this is main reply content/, 'email contains main reply content' );
-like( $mail, qr/Cc:.*rt-test\@example.com/, 'email contains Ccs');
-like( $mail, qr/To:.*rt-to-test\@example.com/, 'email contains Tos');
+like( $mail, qr/Cc:.*rt-test\@example.com/i, 'email contains Ccs');
+like( $mail, qr/To:.*rt-to-test\@example.com/i, 'email contains Tos');
 

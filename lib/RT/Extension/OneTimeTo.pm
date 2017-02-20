@@ -4,7 +4,6 @@ use warnings;
 no warnings 'redefine';
 
 our $VERSION = '1.01';
-RT->AddJavaScript('onetimeto.js');
 
 {
     # Includes RT-Send-To in the list of headers used to grab
@@ -110,19 +109,13 @@ RT::Extension::OneTimeTo - Adds a One-time To: box next to the One-time Cc/Bcc b
 
 =item C<make install>
 
-May need root permissions
+This step may need root permissions.
 
 =item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
 
-If you are using RT 4.2 or greater, add this line:
+Add this line:
 
     Plugin('RT::Extension::OneTimeTo');
-
-For RT 4.0, add this line:
-
-    Set(@Plugins, qw(RT::Extension::OneTimeTo));
-
-or add C<RT::Extension::OneTimeTo> to your existing C<@Plugins> line.
 
 =item Clear your mason cache
 

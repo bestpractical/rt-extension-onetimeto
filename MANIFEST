@@ -1,7 +1,6 @@
 Changes
 html/Callbacks/OneTimeTo/Ticket/Elements/ShowTransactionAttachments/MassageDisplayHeaders
 html/Callbacks/OneTimeTo/Ticket/Elements/UpdateCc/BeforeCc
-html/NoAuth/js/onetimeto.js
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
