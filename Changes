@@ -1,3 +1,8 @@
+1.02 2017-02-20
+ - Drop support for RT 4.0
+ - Fix display of RT-Send-To header on RT 4.2 and above
+ - Switch to autocomplete technique from RT 4.2 and above
+
 1.01 2016-12-01
  - Respect RT 4.4.2's HideOneTimeSuggestions config
 

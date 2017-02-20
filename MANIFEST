@@ -1,5 +1,5 @@
 Changes
-html/Callbacks/OneTimeTo/Ticket/Elements/ShowTransactionAttachments/MassageDisplayHeaders
+html/Callbacks/OneTimeTo/Elements/ShowTransactionAttachments/MassageDisplayHeaders
 html/Callbacks/OneTimeTo/Ticket/Elements/UpdateCc/BeforeCc
 inc/Module/Install.pm
 inc/Module/Install/Base.pm

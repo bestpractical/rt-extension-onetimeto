@@ -6,7 +6,7 @@ INSTALLATION
     perl Makefile.PL
     make
     make install
-        May need root permissions
+        This step may need root permissions.
 
     Edit your /opt/rt4/etc/RT_SiteConfig.pm
         Add this line:
