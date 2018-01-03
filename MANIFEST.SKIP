@@ -62,4 +62,4 @@ Makefile$
 ^blib
 ^pm_to_blib
 ^MANIFEST\.
-^t/tmp
+^xt/tmp
