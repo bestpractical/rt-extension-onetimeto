@@ -8,5 +8,6 @@ pm_to_blib
 .prove
 *.sw[po]
 cover_db/
+/xt/lib/RT/Extension/OneTimeTo/Test.pm
 /xt/tmp
 /MYMETA.*

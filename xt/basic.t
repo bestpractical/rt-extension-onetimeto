@@ -2,7 +2,9 @@
 use strict;
 use warnings;
 
-use RT::Test tests => 24, testing => 'RT::Extension::OneTimeTo';
+use lib 'xt/lib';
+
+use RT::Extension::OneTimeTo::Test tests => undef;
 
 my ($baseurl, $m) = RT::Test->started_ok;
 ok $m->login, 'logged in';
@@ -54,3 +56,4 @@ like( $mail, qr/this is main reply content/, 'email contains main reply content'
 like( $mail, qr/Cc:.*rt-test\@example.com/i, 'email contains Ccs');
 like( $mail, qr/To:.*rt-to-test\@example.com/i, 'email contains Tos');
 
+done_testing;

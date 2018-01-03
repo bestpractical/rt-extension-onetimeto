@@ -12,6 +12,7 @@ inc/Module/Install/Metadata.pm
 inc/Module/Install/ReadmeFromPod.pm
 inc/Module/Install/RTx.pm
 inc/Module/Install/RTx/Runtime.pm
+inc/Module/Install/Substitute.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/YAML/Tiny.pm
@@ -22,3 +23,4 @@ META.yml
 README
 xt/basic.t
 xt/empty-update.t
+xt/lib/RT/Extension/OneTimeTo/Test.pm.in

@@ -63,3 +63,4 @@ Makefile$
 ^pm_to_blib
 ^MANIFEST\.
 ^xt/tmp
+^xt/lib/RT/Extension/OneTimeTo/Test.pm$

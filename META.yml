@@ -19,6 +19,8 @@ no_index:
     - html
     - inc
     - xt
+  package:
+    - RT::Extension::OneTimeTo::Test
 requires:
   perl: 5.10.1
 resources:
