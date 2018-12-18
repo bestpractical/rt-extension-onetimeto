@@ -114,6 +114,16 @@ RT::Extension::OneTimeTo - Adds a One-time To: box next to the One-time Cc/Bcc b
 
 This step may need root permissions.
 
+=item Patch RT(For RT 4.4)
+
+For RT 4.4.2+:
+
+    patch -p1 -d /opt/rt4 < patches/Support-UpdateTo-in-preview-scrips.patch
+
+For RT 4.4.0 and 4.4.1:
+
+    patch -p1 -d /opt/rt4 -F3 < patches/Support-UpdateTo-in-preview-scrips.patch
+
 =item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
 
 Add this line:
