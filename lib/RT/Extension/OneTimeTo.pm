@@ -154,7 +154,7 @@ or via the web at
 
 =head1 LICENSE AND COPYRIGHT
 
-This software is Copyright (c) 2010-2015 by Best Practical Solutions
+This software is Copyright (c) 2010-2018 by Best Practical Solutions
 
 This is free software, licensed under:
 
